@@ -5,8 +5,10 @@ import Item from '../components/Item'
 import { pokemons } from '../gql/pokemons';
 
 const styles = css`
-  margin-top: 80px;
   text-align: center;
+  max-width: 576px;
+  margin: auto;
+  padding-top: 80px;
 
   .list {
     display: flex;

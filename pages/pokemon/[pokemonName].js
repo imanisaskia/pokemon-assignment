@@ -5,8 +5,10 @@ import {css} from '@emotion/react'
 import { pokemonDetail } from '../../gql/pokemonDetail';
 
 const styles = css`
-  margin-top: 80px;
   text-align: center;
+  max-width: 576px;
+  margin: auto;
+  padding-top: 80px;
   padding-bottom: 16px;
 
   img {
