@@ -7,6 +7,7 @@ import { pokemonDetail } from '../../gql/pokemonDetail';
 const styles = css`
   text-align: center;
   max-width: 757px;
+  min-width: 360px;
   margin: auto;
   padding-top: 76px;
   padding-bottom: 16px;

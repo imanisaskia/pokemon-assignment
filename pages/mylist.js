@@ -7,6 +7,7 @@ import { pokemonDetail } from '../gql/pokemonDetail';
 const styles = css`
   text-align: center;
   max-width: 757px;
+  min-width: 360px;
   margin: auto;
   padding-top: 76px;
   padding-bottom: 16px;
@@ -24,7 +25,7 @@ const styles = css`
   }
   @media (min-width: 757px) {
     .item-wrapper {
-      max-width: 25%;
+      width: 25%;
     }
   }
 `

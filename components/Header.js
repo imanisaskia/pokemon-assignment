@@ -16,6 +16,7 @@ const styles = css`
     align-items: stretch;
     justify-content: space-between;
     max-width: 757px;
+    min-width: 360px;
     margin: 0 auto;
     height: 60px;
   }

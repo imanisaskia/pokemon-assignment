@@ -7,6 +7,7 @@ import { pokemons } from '../gql/pokemons';
 const styles = css`
   text-align: center;
   max-width: 767px;
+  min-width: 360px;
   margin: auto;
   padding-top: 76px;
 
@@ -21,7 +22,7 @@ const styles = css`
   }
   @media (min-width: 767px) {
     .item-wrapper {
-      max-width: 25%;
+      width: 25%;
     }
   }
   .pagination {
