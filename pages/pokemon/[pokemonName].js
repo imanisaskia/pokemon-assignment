@@ -18,6 +18,9 @@ const styles = css`
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   }
+  .count-owned {
+    margin-top: 8px;
+  }
   button {
     background-color: var(--primary);
     color: white;
@@ -49,6 +52,19 @@ function Detail() {
 
   const {data} = pokemonDetail(pokemonName);
 
+  const countOwned = () => {
+    const ownedData = JSON.parse(window.localStorage.getItem('pokemons'));
+    if (ownedData) {
+      if (ownedData[pokemonName]) {
+        return ownedData[pokemonName].length;
+      } else {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
+  }
+
   const gacha = () => {
     const result = Math.random();
     if (result >= 0.5) {
@@ -60,7 +76,6 @@ function Detail() {
 
   const addNewPokemon = () => {
     let owned = JSON.parse(localStorage.getItem('pokemons'));
-    console.log(owned);
     if (!owned) {
       owned = {};
     }
@@ -99,6 +114,7 @@ function Detail() {
     <div css={styles}>
       <h1>{pokemonName}</h1>
       <img src={data?.pokemon.sprites.front_default} />
+      <div className="count-owned">owned: {countOwned()}</div>
       <button onClick={() => gacha()}>Catch!</button>
       <div className="section">
         <h2>Moves</h2>

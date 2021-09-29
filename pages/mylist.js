@@ -22,18 +22,26 @@ const styles = css`
 `
 
 export default function MyList() {
-
   if (typeof window === "undefined") {
     return <></>;
   }
 
-  let listData = JSON.parse(window.localStorage.getItem('pokemons'));
+  const listData = () => {
+    let array = [];
+    const data = JSON.parse(window.localStorage.getItem('pokemons'));
+    Object.keys(data).forEach((type) => {
+      data[type].forEach((name) => {
+        array.push({type, name});
+      })
+    })
+    return array;
+  }
 
   const deletePokemon = (type, name) => {
-    let newListData = listData;
-    let index = listData[type].indexOf(name);
-    newListData[type].splice(index, 1);
-    window.localStorage.setItem('pokemons', JSON.stringify(newListData));
+    let newData = JSON.parse(window.localStorage.getItem('pokemons'));
+    let index = newData[type].indexOf(name);
+    newData[type].splice(index, 1);
+    window.localStorage.setItem('pokemons', JSON.stringify(newData));
     location.reload();
   }
 
@@ -41,20 +49,14 @@ export default function MyList() {
     <div css={styles}>
       <h1>My Pokemons</h1>
       <div className="list">
-        {Object.keys(listData).map((type, i) => {
+        {listData().map(({type, name}, i) => {
           return (
-            <div key={i}>
-              {listData[type].map((name, j) => {
-                return (
-                  <div key={i+j} className="item-wrapper">
-                    <MyItem
-                      name={name}
-                      imageUrl={pokemonDetail(type).data?.pokemon.sprites.front_default}
-                      onDelete={() => deletePokemon(type, name)}
-                    />
-                  </div>
-                )
-              })}
+            <div key={i} className="item-wrapper">
+              <MyItem
+                name={name}
+                imageUrl={pokemonDetail(type).data?.pokemon.sprites.front_default}
+                onDelete={() => deletePokemon(type, name)}
+              />
             </div>
           )
         })}
