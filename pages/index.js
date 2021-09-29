@@ -2,7 +2,6 @@ import React from 'react';
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import Item from '../components/Item'
-import Footer from '../components/Footer'
 import { pokemons } from '../gql/pokemons';
 
 const styles = css`
@@ -84,7 +83,6 @@ export default function Home() {
         <div className="pagination-number">{page}</div>
         <button className="pagination-control" onClick={() => setPage(page+1)} disabled={page === numPages}>»</button>
       </div>
-      <Footer />
     </div>
   )
 }
