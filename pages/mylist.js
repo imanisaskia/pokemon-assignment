@@ -53,8 +53,8 @@ export default function MyList() {
     <div css={styles}>
       <h1>My Pokemons</h1>
       <div className="list">
-        {Object.keys(listData).length === 0 && 'You have yet to capture a Pokemon.'}
-        {Object.keys(listData).map((type, i) => {
+        {(!listData || Object.keys(listData).length === 0) && 'You have yet to capture a Pokemon.'}
+        {listData && Object.keys(listData).map((type, i) => {
           return (
             <>
               {listData[type].map((name, j) => {
