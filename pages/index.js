@@ -51,7 +51,7 @@ const styles = css`
   }
 `
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 export default function Home() {
   const [page, setPage] = React.useState(1);
