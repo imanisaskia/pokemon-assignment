@@ -6,20 +6,23 @@ import { pokemons } from '../gql/pokemons';
 
 const styles = css`
   text-align: center;
-  max-width: 576px;
+  max-width: 767px;
   margin: auto;
-  padding-top: 80px;
+  padding-top: 76px;
 
   .list {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     padding: 4px;
   }
   .item-wrapper {
-    width: 160px;
-    margin: 4px;
+    width: 50%;
+    padding: 4px;
+  }
+  @media (min-width: 767px) {
+    .item-wrapper {
+      max-width: 25%;
+    }
   }
   .pagination {
     display: flex;
@@ -33,7 +36,7 @@ const styles = css`
     background-color: transparent;
     padding: 4px 8px;
     margin: 16px;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
     color: var(--primary);
   }
@@ -53,7 +56,7 @@ const styles = css`
   }
 `
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = 12;
 
 export default function Home() {
   const [page, setPage] = React.useState(1);

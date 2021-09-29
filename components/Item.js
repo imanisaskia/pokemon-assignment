@@ -18,7 +18,7 @@ const styles = css`
     width: 96px;
   }
   .item-owned {
-    font-size: 14px;
+    font-size: 0.9em;
   }
 `
 

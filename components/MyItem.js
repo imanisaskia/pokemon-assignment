@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
-import Link from 'next/link'
 
 const styles = css`
   width: 100%;
@@ -18,12 +17,6 @@ const styles = css`
     width: 96px;
   }
   button {
-    font-weight: bold;
-    color: white;
-    background-color: var(--primary);
-    padding: 8px 16px;
-    border: 0;
-    border-radius: 8px;
     width: 100%;
   }
 `

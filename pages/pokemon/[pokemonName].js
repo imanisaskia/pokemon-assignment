@@ -6,9 +6,9 @@ import { pokemonDetail } from '../../gql/pokemonDetail';
 
 const styles = css`
   text-align: center;
-  max-width: 576px;
+  max-width: 757px;
   margin: auto;
-  padding-top: 80px;
+  padding-top: 76px;
   padding-bottom: 16px;
 
   img {
@@ -24,23 +24,23 @@ const styles = css`
     margin-top: 8px;
   }
   button {
-    background-color: var(--primary);
-    color: white;
-    margin: 8px 16px;
-    padding: 8px 16px;
-    font-weight: bold;
-    border: 0;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    margin: 8px 0;
   }
   .section {
     background-color: white;
     box-shadow: var(--shadow);
     padding: 16px;
-    padding-bottom: 24px;
     margin: 8px;
     border-radius: 8px;
     text-align: left;
+  }
+  .list-item {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 4px 8px;
+    background-color: rgba(0,0,0,0.1);
+    font-size: 0.9em;
   }
 `
 
@@ -125,13 +125,13 @@ function Detail() {
       <div className="section">
         <h2>Moves</h2>
         {data?.pokemon.moves.map(({move}, i) => {
-          return (move.name + (i !== data.pokemon.moves.length - 1 ? ', ' : null))
+          return <div key={'move-'+i} className="list-item">{move.name}</div>;
         })}
       </div>
       <div className="section">
         <h2>Types</h2>
         {data?.pokemon.types.map(({type}, i) => {
-          return (type.name + (i !== data.pokemon.types.length - 1 ? ', ' : null))
+          return <div key={'type-'+i} className="list-item">{type.name}</div>;
         })}
       </div>
       {showSuccess && <SuccessPopUp />}
