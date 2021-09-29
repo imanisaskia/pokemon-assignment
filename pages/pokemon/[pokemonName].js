@@ -52,6 +52,10 @@ function Detail() {
 
   const {data} = pokemonDetail(pokemonName);
 
+  if (typeof window === "undefined") {
+    return <></>;
+  }
+
   const countOwned = () => {
     const ownedData = JSON.parse(window.localStorage.getItem('pokemons'));
     if (ownedData) {
