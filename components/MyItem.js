@@ -13,6 +13,10 @@ const styles = css`
   background-color: white;
   box-shadow: var(--shadow);
 
+  img {
+    height: 96px;
+    width: 96px;
+  }
   button {
     font-weight: bold;
     color: white;
