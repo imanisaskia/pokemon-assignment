@@ -12,6 +12,11 @@ const styles = css`
   border-radius: 8px;
   background-color: white;
   box-shadow: var(--shadow);
+  cursor: pointer;
+
+  :hover {
+    background-color: rgba(0,0,0,0.05);
+  }
 
   img {
     height: 96px;
