@@ -7,30 +7,26 @@ const styles = css`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 40%;
+  width: 29%;
   max-width: 200px;
-  padding: 16px;
+  padding: 8px;
   border-radius: 8px;
-  margin: 8px;
+  margin: 4px;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-
-  .item-name {
-    font-weight: bold;
-  }
+  box-shadow: var(--shadow);
 
   .item-owned {
     font-size: 14px;
   }
 `
 
-export default function Item({name, imageUrl, owned = 0}) {
+export default function Item({name, imageUrl, owned}) {
   return (
     <Link href={'/pokemon/'+name}>
       <div css={styles}>
-        <div className="item-name">{name}</div>
+        <h3>{name}</h3>
         <img src={imageUrl} />
-        <div className="item-owned">owned: {owned}</div>
+        {owned && <div className="item-owned">owned: {owned}</div>}
       </div>
     </Link>
   )

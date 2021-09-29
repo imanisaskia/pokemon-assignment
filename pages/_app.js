@@ -1,10 +1,6 @@
 import Head from 'next/head'
 import '../styles/globals.css'
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
+import {ApolloClient, InMemoryCache, ApolloProvider} from "@apollo/client";
 import Header from '../components/Header'
 
 const client = new ApolloClient({

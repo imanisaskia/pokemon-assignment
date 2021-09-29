@@ -8,12 +8,6 @@ const styles = css`
   margin-top: 80px;
   text-align: center;
 
-  .page-title {
-    margin: 8px 0;
-    font-weight: bold;
-    font-size: 18px;
-    text-transform: uppercase;
-  }
   .list {
     display: flex;
     flex-wrap: wrap;
@@ -52,7 +46,7 @@ const styles = css`
   }
 `
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 30;
 
 export default function Home() {
   const [page, setPage] = React.useState(1);
@@ -68,13 +62,26 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, [page]);
 
+  const countOwned = (pokemonName) => {
+    const ownedData = JSON.parse(window.localStorage.getItem('pokemons'));
+    if (ownedData) {
+      if (ownedData[pokemonName]) {
+        return ownedData[pokemonName].length;
+      } else {
+        return '0';
+      }
+    } else {
+      return '0';
+    }
+  }
+
   return (
     <div css={styles}>
-      <div className="page-title">Pokemon List</div>
+      <h1>Pokemon List</h1>
       <div className="list">
         {listData?.map((pokemon, i) => {
           return (
-            <Item key={i} name={pokemon.name} imageUrl={pokemon.image} />
+            <Item key={i} name={pokemon.name} imageUrl={pokemon.image} owned={countOwned(pokemon.name)} />
           )
         })}
       </div>
