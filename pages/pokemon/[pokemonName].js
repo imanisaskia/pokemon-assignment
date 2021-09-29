@@ -42,6 +42,11 @@ const styles = css`
     background-color: rgba(0,0,0,0.1);
     font-size: 0.9em;
   }
+  .error-message {
+    font-size: 0.8em;
+    color: var(--primary);
+    height: 40px;
+  }
 `
 
 function Detail() {
@@ -51,6 +56,7 @@ function Detail() {
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [showFailure, setShowFailure] = React.useState(false);
   const [name, setName] = React.useState('');
+  const [error, setError] = React.useState(false);
 
   const {data} = pokemonDetail(pokemonName);
 
@@ -88,17 +94,28 @@ function Detail() {
     if (!owned[pokemonName]) {
       owned[pokemonName] = [];
     }
+    if (name === '') {
+      setError('Nickname must be at least 1 character');
+      return;
+    }
+    if (owned[pokemonName].includes(name)) {
+      setError('Please choose a different nickname');
+      return;
+    }
     owned[pokemonName].push(name);
     window.localStorage.setItem('pokemons', JSON.stringify(owned));
     setShowSuccess(false);
+    setName('');
+    setError('');
   }
 
   const SuccessPopUp = () => {
     return (
       <div className="pop-up-container">
         <div className="pop-up">
-          <h2>Give your new Pokemon a name</h2>
+          <h2>Give your new Pokemon a nickname</h2>
           <input autoFocus type="text" value={name} onChange={event => setName(event.target.value)}></input>
+          <div className="error-message">{error}</div>
           <button onClick={() => addNewPokemon()}>Save</button>
         </div>
       </div>
