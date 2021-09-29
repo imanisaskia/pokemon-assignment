@@ -3,15 +3,13 @@ import {css} from '@emotion/react'
 import Link from 'next/link'
 
 const styles = css`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 29%;
-  max-width: 200px;
   padding: 8px;
   border-radius: 8px;
-  margin: 4px;
   background-color: white;
   box-shadow: var(--shadow);
 
@@ -26,7 +24,7 @@ export default function Item({name, imageUrl, owned}) {
       <div css={styles}>
         <h3>{name}</h3>
         <img src={imageUrl} />
-        {owned && <div className="item-owned">owned: {owned}</div>}
+        <div className="item-owned">owned: {owned}</div>
       </div>
     </Link>
   )

@@ -13,6 +13,11 @@ const styles = css`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding: 4px;
+  }
+  .item-wrapper {
+    width: 160px;
+    margin: 4px;
   }
   .pagination {
     display: flex;
@@ -46,7 +51,7 @@ const styles = css`
   }
 `
 
-const ITEMS_PER_PAGE = 30;
+const ITEMS_PER_PAGE = 10;
 
 export default function Home() {
   const [page, setPage] = React.useState(1);
@@ -68,10 +73,10 @@ export default function Home() {
       if (ownedData[pokemonName]) {
         return ownedData[pokemonName].length;
       } else {
-        return '0';
+        return 0;
       }
     } else {
-      return '0';
+      return 0;
     }
   }
 
@@ -81,7 +86,9 @@ export default function Home() {
       <div className="list">
         {listData?.map((pokemon, i) => {
           return (
-            <Item key={i} name={pokemon.name} imageUrl={pokemon.image} owned={countOwned(pokemon.name)} />
+            <div key={i} className="item-wrapper">
+              <Item name={pokemon.name} imageUrl={pokemon.image} owned={countOwned(pokemon.name)} />
+            </div>
           )
         })}
       </div>

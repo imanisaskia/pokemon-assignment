@@ -33,7 +33,7 @@ const styles = css`
     box-shadow: var(--shadow);
     padding: 16px;
     padding-bottom: 24px;
-    margin: 8px 16px;
+    margin: 8px;
     border-radius: 8px;
     text-align: left;
   }
