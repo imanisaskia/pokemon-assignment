@@ -40,6 +40,11 @@ export default function MyList() {
     let newData = listData;
     let index = newData[type].indexOf(name);
     newData[type].splice(index, 1);
+
+    if (newData[type].length === 0) {
+      delete newData[type];
+    }
+
     window.localStorage.setItem('pokemons', JSON.stringify(newData));
     location.reload();
   }
@@ -48,6 +53,7 @@ export default function MyList() {
     <div css={styles}>
       <h1>My Pokemons</h1>
       <div className="list">
+        {Object.keys(listData).length === 0 && 'You have yet to capture a Pokemon.'}
         {Object.keys(listData).map((type, i) => {
           return (
             <>
